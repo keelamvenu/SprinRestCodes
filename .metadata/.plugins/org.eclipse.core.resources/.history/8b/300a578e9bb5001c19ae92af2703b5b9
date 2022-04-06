@@ -1,0 +1,27 @@
+//package com.kmc.restapi;
+
+package com.kmc.restapi;
+
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloWorldController {
+	
+	// GET HTTP Method
+	// http://localhost:8080/hello-world
+	@GetMapping("/hello-world")
+	public String helloWorld() {
+		return "Hello World!";
+	}
+	@PostMapping("/hello-worldpost")
+	public String helloWorldPost() {
+		return "Hello World! post";
+	}
+	
+	
+	
+	
+}

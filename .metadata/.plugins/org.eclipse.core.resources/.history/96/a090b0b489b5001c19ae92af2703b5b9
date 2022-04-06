@@ -1,0 +1,24 @@
+package com.kmc.restapi;
+@RestController  
+public class UserResource   
+{  
+@Autowired  
+private UserDaoService service;  
+@GetMapping("/users")  
+public List<User> retriveAllUsers()  
+{  
+return service.findAll();  
+}  
+//retrieves a specific user detail  
+@GetMapping("/users/{id}")  
+public User retriveUser(@PathVariable int id)  
+{  
+return service.findOne(id);  
+}  
+//method that posts a new user detail   
+@PostMapping("/users")  
+public void createUser(@RequestBody User user)  
+{  
+User sevedUser=service.save(user);    
+}  
+}  

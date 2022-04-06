@@ -1,0 +1,55 @@
+package com.kmc.restapi;
+import org.springframework.web.bind.annotation.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+@RestController
+@RequestMapping("/employees")
+public class Controller {
+
+    Map<String,Rest> info= new HashMap<String, Rest>();
+@PostMapping
+public String send(@RequestBody Rest empdetails)
+{
+Rest adddetails= new Rest();
+adddetails.setUser_id(empdetails.getUser_id());
+adddetails.setName(empdetails.getName());
+adddetails.setMail(empdetails.getMail());
+info.put(empdetails.getUser_id(),adddetails);
+System.out.println(empdetails.toString());
+return "employee added";
+}
+
+@GetMapping
+public Collection<Rest> recieve()
+{
+return info.values();
+}
+
+@PutMapping(path="/{User_id}")
+public String alter(@PathVariable String User_id,@RequestBody Rest empdetails)
+{
+if(info.containsKey(User_id))
+{
+    Rest moddetails= new Rest();
+    moddetails.setUser_id(empdetails.getUser_id());
+    moddetails.setName(empdetails.getName());
+    moddetails.setMail(empdetails.getMail());
+    info.put(User_id,moddetails);
+    return "edit is done";
+}
+else
+    return "employee ID not found";
+}
+
+@DeleteMapping(path="/{User_id}")
+public String delete(@PathVariable String User_id)
+{
+if(info.containsKey(User_id)){
+    info.remove(User_id);
+    return "employee details deleted";
+}
+else
+    return "employee ID not found";
+}
+}

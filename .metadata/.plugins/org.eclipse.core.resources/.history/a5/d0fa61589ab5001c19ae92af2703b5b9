@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.kmc.restapi;
+
+/**
+ * @author invkeel
+ *
+ */
+public class Employee {
+	
+	String 
+
+	/**
+	 * 
+	 */
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

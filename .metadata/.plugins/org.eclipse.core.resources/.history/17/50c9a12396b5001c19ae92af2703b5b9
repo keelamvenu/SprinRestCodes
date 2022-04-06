@@ -1,0 +1,39 @@
+package com.kmc.restapi.com.kmc.restapi;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+public class EmpController 
+{
+//	@GetMapping("/employees")
+//	public List<Employee> getAllEmployees() {
+//	    return employeeRepository.findAll();
+//	}
+//
+//	@GetMapping("/employees/{id}")
+//	public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+//	 throws ResourceNotFoundException {
+//	    Employee employee = employeeRepository.findById(employeeId)
+//	      .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+//	    return ResponseEntity.ok().body(employee);
+//	}
+	
+	
+	@PutMapping("/employees/{id}")
+	public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+	  @Validated @RequestBody Employee employeeDetails) throws Exception {
+	    Employee employee = employeeRepository.findById(employeeId)
+	    .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+	    employee.setEmailId(employeeDetails.getEmailId());
+	    employee.setLastName(employeeDetails.getLastName());
+	    employee.setFirstName(employeeDetails.getFirstName());
+	    final Employee updatedEmployee = employeeRepository.save(employee);
+	    return ResponseEntity.ok(updatedEmployee);
+	}
+
+}

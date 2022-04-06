@@ -27,14 +27,10 @@ public class Employee
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	public Employee(String id, String name, int salary) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.salary = salary;
+	
 	}
 	
 	
 	
 
-}
+

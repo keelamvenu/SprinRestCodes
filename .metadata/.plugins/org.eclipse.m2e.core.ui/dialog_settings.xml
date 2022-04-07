@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -43,12 +44,15 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="RestApi"/>
 			<item value="com.kmc.setters"/>
 			<item value="com.kmc.dependencyinjection"/>
 		</list>
 		<list key="name">
+			<item value="Rest"/>
 		</list>
 		<list key="artifactId">
+			<item value="com.kmc.restapi"/>
 			<item value="SetterInjections"/>
 			<item value="SampleInjection"/>
 		</list>
@@ -67,5 +71,19 @@
 	<section name="org.eclipse.m2e.core.pom.overview">
 	</section>
 	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\invkeel\Downloads\demo1"/>
+			<item value="C:\Users\invkeel\Downloads\demo"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
 	</section>
 </section>

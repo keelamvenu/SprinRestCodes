@@ -1,9 +1,0 @@
-@RestController
-public class PostMappingDemo {
-
-	@PostMapping(value = "/save")
-	public Country save(@RequestBody Country country) {
-        // TODO: save logic
-		return country;
-	}
-}

@@ -1,6 +1,7 @@
 package com.kmc.restapi;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -24,16 +25,17 @@ public class EmployeController
 	Map< String, Employee> map=new TreeMap();
 	//List<Employee> list= new LinkedList<Employee>();
 
-	public EmployeController()
-	{
-		Employee e1=new Employee();
-		
-		map.put("1", e1);
-		
-	}
+//	public EmployeController()
+//	{
+//		Employee e1=new Employee();
+//		
+//		map.put(id, e1);
+//		
+//	}
 	
 	
 	@GetMapping
+	//public Map< String, Employee> get()
 	public Map< String, Employee> get()
 	{
 		return map;
@@ -47,7 +49,7 @@ public class EmployeController
 		e2.setName(empdetails.getName());
 		e2.setSalary(empdetails.getSalary());
 		
-		map.put("2", e2);
+		map.put(e2.getId(), e2);
 		
 		return "added";
 	}
@@ -63,7 +65,7 @@ public class EmployeController
 		e1.setName(empdetails.getName());
 		e1.setSalary(empdetails.getSalary());
 		
-		map.put("3", e1);	
+		map.put(id, e1);	
 		
 	
 		}
@@ -81,6 +83,25 @@ public class EmployeController
     return "employee ID not found";
 	}
 	
+	
+	@PatchMapping(path="/{id}")
+	public String patchemp(@PathVariable String id,@RequestBody Employee empdetails)
+	{
+		
+		if(map.containsKey(id)){
+			Employee e1=new Employee();
+			e1.setId(empdetails.getId());
+			e1.setName(empdetails.getName());
+			e1.setSalary(empdetails.getSalary());
+			map.put(id, e1);
+		    return "employee details patched";
+		}
+		else
+	    return "employee ID not found";
+		}
+		
+}
+	
 		
 	
-}
+

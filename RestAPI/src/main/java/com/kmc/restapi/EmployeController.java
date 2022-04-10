@@ -18,90 +18,76 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController // @RestController is the way the HTTP response body is created
 @RequestMapping("/employee")
-public class EmployeController 
-{
-	Map< String, Employee> map=new TreeMap();
-	//List<Employee> list= new LinkedList<Employee>();
+public class EmployeController {
+	Map<String, Employee> map = new TreeMap();
 
-//	public EmployeController()
-//	{
-//		Employee e1=new Employee();
-//		
-//		map.put(id, e1);
-//		
-//	}
-	
-	
 	@GetMapping
-	//public Map< String, Employee> get()
-	public Map< String, Employee> get()
-	{
+	public Map<String, Employee> getAL̥ll() {
 		return map;
 	}
-	
-	@PostMapping
-	public String postemp(@RequestBody Employee empdetails)
+
+	@GetMapping(path="/{id}")
+	public Map<String, Employee> getbyid(@PathVariable String id)
 	{
-		Employee e2=new Employee();
-		e2.setId(empdetails.getId());
-		e2.setName(empdetails.getName());
-		e2.setSalary(empdetails.getSalary());
+		if (map.containsKey(id)) {
+			map.get(id);
+			
+		} else
+			return (Map<String, Employee>) map.get(id);
+		return (Map<String, Employee>) map.values();
 		
-		map.put(e2.getId(), e2);
-		
-		return "added";
 	}
-	
-	
-	@PutMapping(path="/{id}")
-	public String putemp(@PathVariable String id,@RequestBody Employee empdetails)
-	{
-		if(map.containsKey(id)) {
-	
-		Employee e1=new Employee();
+
+	@PostMapping
+	public String postEmployee(@RequestBody Employee empdetails) {
+		Employee e1 = new Employee();
 		e1.setId(empdetails.getId());
 		e1.setName(empdetails.getName());
 		e1.setSalary(empdetails.getSalary());
-		
-		map.put(id, e1);	
-		
-	
+
+		map.put(e1.getId(), e1);
+
+		return "added";
+	}
+
+	@PutMapping(path = "/{id}")
+	public String putEmployee(@PathVariable String id, @RequestBody Employee empdetails) {
+		if (map.containsKey(id)) {
+
+			Employee e1 = new Employee();
+			e1.setId(empdetails.getId());
+			e1.setName(empdetails.getName());
+			e1.setSalary(empdetails.getSalary());
+
+			map.put(id, e1);
+
 		}
 		return "put";
 	}
-	
-	@DeleteMapping(path="/{id}")
-	public String delete(@PathVariable String id)
-	{
-   if(map.containsKey(id)){
-	    map.remove(id);
-	    return "employee details deleted";
+
+	@DeleteMapping(path = "/{id}")
+	public String deleteEmployeeById(@PathVariable String id) {
+		if (map.containsKey(id)) {
+			map.remove(id);
+			return "employee details deleted";
+		} else
+			return "employee ID not found";
 	}
-	else
-    return "employee ID not found";
-	}
-	
-	
-	@PatchMapping(path="/{id}")
-	public String patchemp(@PathVariable String id,@RequestBody Employee empdetails)
-	{
-		
-		if(map.containsKey(id)){
-			Employee e1=new Employee();
+
+	@PatchMapping(path = "/{id}")
+	public String patchEmployee(@PathVariable String id, @RequestBody Employee empdetails) {
+
+		if (map.containsKey(id)) {
+			Employee e1 = new Employee();
 			e1.setId(empdetails.getId());
 			e1.setName(empdetails.getName());
 			e1.setSalary(empdetails.getSalary());
 			map.put(id, e1);
-		    return "employee details patched";
-		}
-		else
-	    return "employee ID not found";
-		}
-		
-}
-	
-		
-	
+			return "employee details patched";
+		} else
+			return "employee ID not found";
+	}
 
+}

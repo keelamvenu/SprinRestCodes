@@ -44,14 +44,17 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="com.kmc.desugnpattern"/>
 			<item value="RestApi"/>
 			<item value="com.kmc.setters"/>
 			<item value="com.kmc.dependencyinjection"/>
 		</list>
 		<list key="name">
+			<item value="designpattern"/>
 			<item value="Rest"/>
 		</list>
 		<list key="artifactId">
+			<item value="DesignPattern"/>
 			<item value="com.kmc.restapi"/>
 			<item value="SetterInjections"/>
 			<item value="SampleInjection"/>
@@ -74,6 +77,10 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\springboot-learning-example-master"/>
+			<item value="C:\springbootMaster"/>
+			<item value="C:\SpringMaster"/>
+			<item value="C:\Users\invkeel\Downloads\springboot-learning-example-master"/>
 			<item value="C:\Users\invkeel\Downloads\demo1"/>
 			<item value="C:\Users\invkeel\Downloads\demo"/>
 		</list>

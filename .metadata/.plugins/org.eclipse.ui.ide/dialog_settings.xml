@@ -37,5 +37,31 @@
 		<item value="org.sonatype.m2e.mavenarchiver.feature:0.17.5.202002191804"/>
 	</list>
 	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.m2e.core.wizards.Maven2ProjectWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+	<section name="org.eclipse.text.quicksearch.internal.ui.QuickSearchDialog.DIALOG_SETTINGS">
+		<item key="LAST_QUERY" value="package com.kmc.restapi;&#x0D;&#x0A;&#x0D;&#x0A;import java.util.Collection;&#x0D;&#x0A;import java.util.HashMap;&#x0D;&#x0A;import java.util.LinkedList;&#x0D;&#x0A;import java.util.List;&#x0D;&#x0A;import java.util.ListIterator;&#x0D;&#x0A;import java.util.Map;&#x0D;&#x0A;import java.util.TreeMap;&#x0D;&#x0A;&#x0D;&#x0A;import org.springframework.web.bind.annotation.DeleteMapping;&#x0D;&#x0A;import org.springframework.web.bind.annotation.GetMapping;&#x0D;&#x0A;import org.springframework.web.bind.annotation.PatchMapping;&#x0D;&#x0A;import org.springframework.web.bind.annotation.PathVariable;&#x0D;&#x0A;import org.springframework.web.bind.annotation.PostMapping;&#x0D;&#x0A;import org.springframework.web.bind.annotation.PutMapping;&#x0D;&#x0A;import org.springframework.web.bind.annotation.RequestBody;&#x0D;&#x0A;import org.springframework.web.bind.annotation.RequestMapping;&#x0D;&#x0A;import org.springframework.web.bind.annotation.RestController;&#x0D;&#x0A;&#x0D;&#x0A;@RestController //@RestController is the way the HTTP response body is created&#x0D;&#x0A;@RequestMapping(&quot;/employee&quot;)&#x0D;&#x0A;public class EmployeController &#x0D;&#x0A;{&#x0D;&#x0A;&#x09;Map&lt; String, Employee&gt; map=new TreeMap();&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;@GetMapping&#x0D;&#x0A;&#x09;public Map&lt; String, Employee&gt; getAL̥ll()&#x0D;&#x0A;&#x09;{&#x0D;&#x0A;&#x09;&#x09;return map;&#x0D;&#x0A;&#x09;}&#x0D;&#x0A;&#x09;&#x0D;&#x0A;//&#x09;@GetMapping(path=&quot;/{id}&quot;)&#x0D;&#x0A;//&#x09;public Map&lt;String, Employee&gt; getbyid(@PathVariable String id)&#x0D;&#x0A;//&#x09;{&#x0D;&#x0A;//&#x09;&#x09;Employee e1=new Employee();&#x0D;&#x0A;//&#x09;&#x09;if(map.containsKey(id))&#x0D;&#x0A;//&#x09;&#x09;{&#x0D;&#x0A;//&#x09;&#x09;&#x09;&#x0D;&#x0A;//&#x09;&#x09;&#x09;&#x0D;&#x0A;//&#x09;&#x09;}&#x0D;&#x0A;//&#x09;&#x09;&#x0D;&#x0A;//&#x09;&#x09;return (Map&lt;String, Employee&gt;) map.get(e1.getId());&#x0D;&#x0A;//&#x09;&#x09;&#x0D;&#x0A;//&#x09;&#x09;&#x0D;&#x0A;//&#x09;&#x0D;&#x0A;//&#x09;&#x09;&#x0D;&#x0A;//&#x09;}&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;@PostMapping&#x0D;&#x0A;&#x09;public String postEmployee(@RequestBody Employee empdetails)&#x0D;&#x0A;&#x09;{&#x0D;&#x0A;&#x09;&#x09;Employee e1=new Employee();&#x0D;&#x0A;&#x09;&#x09;e1.setId(empdetails.getId());&#x0D;&#x0A;&#x09;&#x09;e1.setName(empdetails.getName());&#x0D;&#x0A;&#x09;&#x09;e1.setSalary(empdetails.getSalary());&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;map.put(e1.getId(), e1);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;return &quot;added&quot;;&#x0D;&#x0A;&#x09;}&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;@PutMapping(path=&quot;/{id}&quot;)&#x0D;&#x0A;&#x09;public String putEmployee(@PathVariable String id,@RequestBody Employee empdetails)&#x0D;&#x0A;&#x09;{&#x0D;&#x0A;&#x09;&#x09;if(map.containsKey(id)) {&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;&#x09;Employee e1=new Employee();&#x0D;&#x0A;&#x09;&#x09;e1.setId(empdetails.getId());&#x0D;&#x0A;&#x09;&#x09;e1.setName(empdetails.getName());&#x0D;&#x0A;&#x09;&#x09;e1.setSalary(empdetails.getSalary());&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;map.put(id, e1);&#x09;&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;&#x09;}&#x0D;&#x0A;&#x09;&#x09;return &quot;put&quot;;&#x0D;&#x0A;&#x09;}&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;@DeleteMapping(path=&quot;/{id}&quot;)&#x0D;&#x0A;&#x09;public String deleteEmployeeById(@PathVariable String id)&#x0D;&#x0A;&#x09;{&#x0D;&#x0A;   if(map.containsKey(id)){&#x0D;&#x0A;&#x09;    map.remove(id);&#x0D;&#x0A;&#x09;    return &quot;employee details deleted&quot;;&#x0D;&#x0A;&#x09;}&#x0D;&#x0A;&#x09;else&#x0D;&#x0A;    return &quot;employee ID not found&quot;;&#x0D;&#x0A;&#x09;}&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;@PatchMapping(path=&quot;/{id}&quot;)&#x0D;&#x0A;&#x09;public String patchEmployee(@PathVariable String id,@RequestBody Employee empdetails)&#x0D;&#x0A;&#x09;{&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;if(map.containsKey(id)){&#x0D;&#x0A;&#x09;&#x09;&#x09;Employee e1=new Employee();&#x0D;&#x0A;&#x09;&#x09;&#x09;e1.setId(empdetails.getId());&#x0D;&#x0A;&#x09;&#x09;&#x09;e1.setName(empdetails.getName());&#x0D;&#x0A;&#x09;&#x09;&#x09;e1.setSalary(empdetails.getSalary());&#x0D;&#x0A;&#x09;&#x09;&#x09;map.put(id, e1);&#x0D;&#x0A;&#x09;&#x09;    return &quot;employee details patched&quot;;&#x0D;&#x0A;&#x09;&#x09;}&#x0D;&#x0A;&#x09;&#x09;else&#x0D;&#x0A;&#x09;    return &quot;employee ID not found&quot;;&#x0D;&#x0A;&#x09;&#x09;}&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;}&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x0D;&#x0A;&#x0D;&#x0A;"/>
+		<item key="PATH_FILTER" value=""/>
+		<item key="CASE_SENSITIVE" value="true"/>
+		<item key="KEEP_OPEN" value="false"/>
+		<list key="COLUMN_WIDTHS">
+			<item value="40"/>
+			<item value="400"/>
+			<item value="118"/>
+		</list>
+		<list key="SASH_WEIGHTS">
+			<item value="714"/>
+			<item value="285"/>
+		</list>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="391"/>
+			<item key="DIALOG_Y_ORIGIN" value="43"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		</section>
 	</section>
 </section>
